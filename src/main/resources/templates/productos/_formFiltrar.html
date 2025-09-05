@@ -1,0 +1,41 @@
+<th:block th:fragment="modalFiltrar">
+
+    <!-- Modal Filtro Productos -->
+    <div class="modal fade" id="modalFiltro" tabindex="-1" aria-labelledby="modalFiltroLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form th:action="@{/productos/buscar}" method="get">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalFiltroLabel">Filtrar Productos</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="nombreFiltro" class="form-label">Nombre</label>
+                            <input type="text" class="form-control" id="nombreFiltro" name="nombre" th:value="${param.nombre}" autocomplete="off">
+                        </div>
+                        <div class="mb-3">
+                            <label for="descripcionFiltro" class="form-label">Descripción (contiene)</label>
+                            <input type="text" class="form-control" id="descripcionFiltro" name="descripcion" th:value="${param.descripcion}" autocomplete="off">
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="precioFiltro" class="form-label">Precio</label>
+                                <input type="number" step="0.01" class="form-control" id="precioFiltro" name="precio" th:value="${param.precio}" autocomplete="off">
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="cantidadFiltro" class="form-label">Cantidad</label>
+                                <input type="number" class="form-control" id="cantidadFiltro" name="cantidad" th:value="${param.cantidad}" autocomplete="off">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-primary">Aplicar Filtros</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</th:block>

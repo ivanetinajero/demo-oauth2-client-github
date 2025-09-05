@@ -1,0 +1,45 @@
+<th:block th:fragment="menus-app">
+
+   <!-- Navbar -->
+   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <div class="container">
+         <a class="navbar-brand fw-bold" th:href="@{/}">ProductosApp</a>
+         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" 
+            aria-expanded="false" aria-label="Toggle navigation">n"></span>
+         </button>
+         <div class="collapse navbar-collapse" id="navbarNav">
+
+            <ul class="navbar-nav ms-auto">
+               <li class="nav-item" sec:authorize="isAuthenticated() and (hasAuthority('SUPERVISOR') or hasAuthority('ADMIN'))">
+                  <a class="nav-link" th:href="@{/productos}">Productos</a>
+               </li>
+               <li class="nav-item" sec:authorize="isAuthenticated() and hasAuthority('ADMIN')">
+                  <a class="nav-link" th:href="@{/usuarios}">Usuarios</a>
+               </li>
+               <li class="nav-item"><a class="nav-link" th:href="@{/acerca}">Acerca</a></li>
+
+               <!-- Mostrar solo si NO hay sesión -->
+               <li class="nav-item" sec:authorize="!isAuthenticated()">
+                  <a class="btn btn-primary ms-2" th:href="@{/oauth2/authorization/github}">Ingresar con GitHub</a>
+               </li>
+
+               <!-- Mostrar solo si HAY sesión -->
+               <li class="nav-item dropdown" sec:authorize="isAuthenticated()">
+                  <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                     👤 <span sec:authentication="name"></span>
+                  </a>
+                  <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                     <li>
+                        <form th:action="@{/logout}" method="post">
+                           <button type="submit" class="dropdown-item">Cerrar sesión</button>
+                        </form>
+                     </li>
+                  </ul>
+               </li>
+            </ul>
+            
+         </div>
+      </div>
+   </nav>
+
+</th:block>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productos App</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+        }
+        .hero {
+            background: linear-gradient(135deg, #0d6efd 0%, #6610f2 100%);
+            color: white;
+            padding: 120px 0;
+            text-align: center;
+        }
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: bold;
+        }
+        .features i {
+            font-size: 2rem;
+            color: #0d6efd;
+        }
+    </style>
+</head>
+<body>
+
+    <div th:replace="~{fragments/menus :: menus-app}"></div>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="container">
+            <h1>Bienvenido a ProductosApp</h1>
+            <p class="lead">Gestiona tus productos de manera sencilla y segura.</p>
+
+            <!-- Botón solo si NO hay sesión -->
+            <a class="btn btn-light btn-lg mt-3" th:href="@{/oauth2/authorization/github}" 
+            sec:authorize="!isAuthenticated()">
+                Comenzar ahora
+            </a>
+
+            <!-- Texto si ya hay sesión -->
+            <p class="mt-3" sec:authorize="isAuthenticated()">
+                Ya has iniciado sesión como <strong><span sec:authentication="name"></span></strong>.
+                <br>
+                Roles: <span th:text="${roles}">[ROLE_USER, ROLE_ADMIN]</span>
+            </p>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section id="features" class="py-5">
+        <div class="container">
+            <div class="row text-center mb-4">
+                <h2 class="fw-bold">Características</h2>
+            </div>
+            <div class="row text-center">
+                <div class="col-md-4">
+                    <i class="bi bi-shield-lock-fill"></i>
+                    <h5 class="mt-3">Autenticación Segura</h5>
+                    <p>Ingreso con tu cuenta de GitHub, sin necesidad de contraseñas propias.</p>
+                </div>
+                <div class="col-md-4">
+                    <i class="bi bi-box-seam"></i>
+                    <h5 class="mt-3">Gestión de Productos</h5>
+                    <p>CRUD completo para administrar tu inventario de forma eficiente.</p>
+                </div>
+                <div class="col-md-4">
+                    <i class="bi bi-people-fill"></i>
+                    <h5 class="mt-3">Roles de Usuario</h5>
+                    <p>Control de accesos diferenciado para administradores y usuarios.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="bg-light py-5">
+        <div class="container text-center">
+            <h2 class="fw-bold mb-3">Acerca del Proyecto</h2>
+            <p class="lead">Esta aplicación es un ejemplo moderno de integración entre Spring Boot 4, OAuth2 con GitHub y Bootstrap 5.</p>
+        </div>
+    </section>
+
+    <div th:replace="~{fragments/footer :: footer-app}"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

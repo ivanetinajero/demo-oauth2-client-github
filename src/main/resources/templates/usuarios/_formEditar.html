@@ -1,0 +1,53 @@
+<th:block th:fragment="modalEditar">
+
+    <!-- Modal Editar Usuario (formulario estático, se llena por JS) -->
+    <div class="modal fade" id="modalEditarUsuario" tabindex="-1" aria-labelledby="modalEditarUsuarioLabel" aria-hidden="true">
+      <div class="modal-dialog">
+         <div class="modal-content">
+            <div class="modal-header">
+               <h5 class="modal-title" id="modalEditarUsuarioLabel">Editar Usuario</h5>
+               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+            </div>
+            <form id="formEditarUsuario" action="/usuarios/guardar" method="post">
+               <div class="modal-body">
+                  <input type="hidden" name="id" id="editarUsuarioId" />
+                  <div class="mb-3">
+                     <label for="editarNombreCompleto" class="form-label">Nombre Completo</label>
+                     <input type="text" class="form-control" id="editarNombreCompleto" name="nombreCompleto" required>
+                  </div>
+                  <div class="mb-3">
+                     <label for="editarEmail" class="form-label">Email</label>
+                     <input type="email" class="form-control" id="editarEmail" name="email" required>
+                  </div>
+                  <div class="row">
+                     <div class="col-md-6 mb-3">
+                        <label for="editarEstatus" class="form-label">Estatus</label>
+                        <select class="form-select" id="editarEstatus" name="estatus" required>
+                           <option value="1">ACTIVO</option>
+                           <option value="2">INACTIVO</option>
+                        </select>
+                     </div>
+                     <div class="col-md-6 mb-3">
+                        <label for="editarGithubLogin" class="form-label">GitHub Login</label>
+                        <input type="text" class="form-control" id="editarGithubLogin" name="githubLogin">
+                     </div>
+                  </div>
+                  <div class="mb-3">
+                     <label for="editarPerfiles" class="form-label">Perfiles</label>
+                     <select class="form-select" id="editarPerfiles" name="perfiles" multiple required>
+                        <option value="1">ADMIN</option>
+                        <option value="2">SUPERVISOR</option>
+                        <option value="3">USUARIO</option>
+                     </select>
+                  </div>
+               </div>
+               <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                  <button type="submit" class="btn btn-primary">Actualizar</button>
+               </div>
+            </form>
+         </div>
+      </div>
+   </div>
+
+</th:block>

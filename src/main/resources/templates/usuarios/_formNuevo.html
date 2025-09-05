@@ -1,0 +1,54 @@
+<th:block th:fragment="modalNuevo">
+
+    <!-- Modal Nuevo Usuario -->
+    <div class="modal fade" id="modalNuevoUsuario" tabindex="-1" aria-labelledby="modalNuevoUsuarioLabel" aria-hidden="true">
+      <div class="modal-dialog">
+         <div class="modal-content">
+            <form th:action="@{/usuarios/guardar}" method="post">
+               <div class="modal-header">
+                  <h5 class="modal-title" id="modalNuevoUsuarioLabel">Nuevo Usuario</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+               </div>
+               <div class="modal-body">
+                  <div class="mb-3">
+                     <label for="nombreCompleto" class="form-label">Nombre Completo</label>
+                     <input type="text" class="form-control" id="nombreCompleto" name="nombreCompleto" required>
+                  </div>
+                  <div class="mb-3">
+                     <label for="email" class="form-label">Email</label>
+                     <input type="email" class="form-control" id="email" name="email" required>
+                  </div>
+                  <div class="row">
+                     <div class="col-md-6 mb-3">
+                        <label for="estatus" class="form-label">Estatus</label>
+                        <select class="form-select" id="estatus" name="estatus" required>
+                           <option value="1">ACTIVO</option>
+                           <option value="2">INACTIVO</option>
+                        </select>
+                     </div>
+                     <div class="col-md-6 mb-3">
+                        <label for="githubLogin" class="form-label">GitHub Login</label>
+                        <input type="text" class="form-control" id="githubLogin" name="githubLogin">
+                     </div>
+                  </div>
+
+                  <div class="mb-3">
+                     <label for="perfiles" class="form-label">Perfiles</label>
+                     <select class="form-select" id="perfiles" name="perfiles" multiple required>
+                        <option value="1">ADMIN</option>
+                        <option value="2">SUPERVISOR</option>
+                        <option value="3">USUARIO</option>
+                     </select>
+                  </div>
+
+               </div>
+               <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                  <button type="submit" class="btn btn-primary">Guardar</button>
+               </div>
+            </form>
+         </div>
+      </div>
+   </div>
+
+</th:block>

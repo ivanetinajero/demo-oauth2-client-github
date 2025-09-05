@@ -1,0 +1,42 @@
+<th:block th:fragment="modalEditar">
+
+    <!-- Modal Editar Producto (formulario estático, se llena por JS) -->
+    <div class="modal fade" id="modalEditar" tabindex="-1" aria-labelledby="modalEditarLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalEditarLabel">Editar Producto</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <form id="formEditar" action="/productos/actualizar" method="post">
+                    <div class="modal-body">
+                        <input type="hidden" name="id" id="editarId" />
+                        <div class="mb-3">
+                            <label for="nombreEditar" class="form-label">Nombre</label>
+                            <input type="text" class="form-control" id="nombreEditar" name="nombre" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="descripcionEditar" class="form-label">Descripción</label>
+                            <textarea class="form-control" id="descripcionEditar" name="descripcion" rows="2" required></textarea>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="precioEditar" class="form-label">Precio</label>
+                                <input type="number" step="0.01" class="form-control" id="precioEditar" name="precio" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="cantidadEditar" class="form-label">Cantidad</label>
+                                <input type="number" class="form-control" id="cantidadEditar" name="cantidad" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-primary">Actualizar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</th:block>
