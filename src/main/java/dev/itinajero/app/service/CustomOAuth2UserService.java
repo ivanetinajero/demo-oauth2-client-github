@@ -48,7 +48,7 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
         String email = user.getAttribute("email");
 
         // 3. Buscar el usuario en la base de datos local usando el login de GitHub. Si no existe, se crea automáticamente y se le asigna el perfil USUARIO
-        Usuario usuario = usuariosRepository.findByGithubLogin(githubLogin)
+        Usuario usuario = usuariosRepository.findByGithubLoginAndEstatus(githubLogin, 1)
             .orElseGet(() -> {
                 // Crear nuevo usuario local
                 Usuario nuevo = new Usuario();

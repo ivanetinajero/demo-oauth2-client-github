@@ -44,7 +44,7 @@ public class StrictOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
       String githubLogin = user.getAttribute("login");
 
       // 3. Buscar el usuario en la base de datos local usando el login de GitHub
-      Usuario usuario = usuariosRepository.findByGithubLogin(githubLogin)
+      Usuario usuario = usuariosRepository.findByGithubLoginAndEstatus(githubLogin, 1)
             .orElseThrow(() ->
             // Si el usuario no existe, se rechaza el acceso lanzando una excepción
             new OAuth2AuthenticationException("Acceso denegado: el usuario no está registrado en el catálogo local."));

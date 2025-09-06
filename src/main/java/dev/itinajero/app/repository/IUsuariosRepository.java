@@ -6,6 +6,6 @@ import dev.itinajero.app.model.Usuario;
 
 public interface IUsuariosRepository extends JpaRepository<Usuario, Long> {
 
-    Optional<Usuario> findByGithubLogin(String githubLogin);
+    Optional<Usuario> findByGithubLoginAndEstatus(String githubLogin, int estatus);
     
 }
